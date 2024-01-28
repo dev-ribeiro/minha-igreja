@@ -15,9 +15,13 @@ import TextField from '@mui/material/TextField';
 
 export function Congregation() {
   const {
+    registerCongretionForm,
     registerCongregationModalVisibility,
-    updateRegisterCongregationModalVisibility
+    updateRegisterCongregationModalVisibility,
+    registerCongregation
   } = useCongration();
+
+  const { register, handleSubmit } = registerCongretionForm;
 
   return (
     <>
@@ -63,20 +67,20 @@ export function Congregation() {
           <Typography variant="subtitle1">
             Cadastro de congregação
           </Typography>
-          <form className="flex flex-col gap-4">
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit(registerCongregation)}>
             <div className="flex flex-col">
-              <label htmlFor="name">Nome:</label>
-              <TextField name="name" />
+              <label htmlFor="nome">Nome:</label>
+              <TextField {...register("nome")} />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="phone">Contato:</label>
-              <TextField name="phone" />
+              <label htmlFor="contato">Contato:</label>
+              <TextField {...register("contato")} />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="address">Endereço:</label>
-              <TextField name="address" />
+              <label htmlFor="endereco">Endereço:</label>
+              <TextField {...register("endereco")} />
             </div>
-            <Button variant="contained">
+            <Button variant="contained" type="submit">
               CADASTRAR
             </Button>
           </form>
