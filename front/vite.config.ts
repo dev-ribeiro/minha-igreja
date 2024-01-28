@@ -10,6 +10,9 @@ export default defineConfig({
       "@layouts": path.join(__dirname, "src/layouts"),
       "@pages": path.join(__dirname, "src/pages"),
       "@components": path.join(__dirname, "src/components"),
+      "@hooks": path.join(__dirname, "src/hooks"),
+      "@models": path.join(__dirname, "src/models"),
+      "@to": path.join(__dirname, "src/to")
     }
   }
 })
