@@ -1,4 +1,6 @@
+import { Router } from "./Router";
+
 export default function App() {
 
-  return <div>APP</div>;
+  return <Router />;
 }
