@@ -12,7 +12,9 @@ export default defineConfig({
       "@components": path.join(__dirname, "src/components"),
       "@hooks": path.join(__dirname, "src/hooks"),
       "@models": path.join(__dirname, "src/models"),
-      "@to": path.join(__dirname, "src/to")
+      "@to": path.join(__dirname, "src/to"),
+      "@libs": path.join(__dirname, "src/libs"),
+      "@services": path.join(__dirname, "src/services")
     }
   }
 })

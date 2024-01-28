@@ -19,6 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "@layouts/*":["./src/layouts/*"],
       "@pages/*":["./src/pages/*"],
@@ -26,6 +27,8 @@
       "@hooks/*":["./src/hooks/*"],
       "@models/*":["./src/models/*"],
       "@to/*":["./src/to/*"],
+      "@libs/*":["./src/libs/*"],
+      "@services/*":["./src/services/*"],
     }
   },
   "include": ["src"],
