@@ -16,12 +16,63 @@ import TextField from '@mui/material/TextField';
 export function Congregation() {
   const {
     registerCongretionForm,
+    congregationsQuery,
+    registerCongregation,
     registerCongregationModalVisibility,
     updateRegisterCongregationModalVisibility,
-    registerCongregation
   } = useCongration();
 
   const { register, handleSubmit } = registerCongretionForm;
+
+  const congregations = congregationsQuery?.response;
+
+  const formattedCongregations = congregations && congregations.length > 0
+    ? (
+      <Box>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Nome</TableCell>
+                <TableCell>Contato</TableCell>
+                <TableCell>Endereço</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {congregations.map(item => (
+                <TableRow key={item.id}>
+                  <TableCell>{item.nome}</TableCell>
+                  <TableCell>{item.contato}</TableCell>
+                  <TableCell>{item.endereco}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    )
+    : (
+      <Box>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Nome</TableCell>
+                <TableCell>Contato</TableCell>
+                <TableCell>Endereço</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell colSpan={3}>
+                  <Typography>Não há congregações a serem exibidas</Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    );
 
   return (
     <>
@@ -36,26 +87,7 @@ export function Congregation() {
             Adicionar
           </Button>
         </div>
-        <Box>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Nome</TableCell>
-                  <TableCell>Contato</TableCell>
-                  <TableCell>Endereço</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Igreja Batista Vale Santa Cecília</TableCell>
-                  <TableCell>(85) 9 8646-5315</TableCell>
-                  <TableCell>Rua Martins de Carvalho, 1800</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Box>
+        {formattedCongregations}
       </Container>
 
       <Modal

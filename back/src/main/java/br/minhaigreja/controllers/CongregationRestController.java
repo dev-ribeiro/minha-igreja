@@ -48,6 +48,8 @@ public class CongregationRestController {
 		response.setResponse(result);
 
 		response.setSuccess(true);
+		
+		response.setNumberOfElements(result.size());
 
 		return new ResponseEntity<ResponseDTO<List<Congregation>>>(response, HttpStatus.OK);
 	}
