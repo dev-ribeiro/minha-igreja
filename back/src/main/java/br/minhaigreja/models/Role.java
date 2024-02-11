@@ -1,5 +1,7 @@
 package br.minhaigreja.models;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +16,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "papeis", schema = "gestao")
 @Data
 @NoArgsConstructor
-public class Role {
+@AllArgsConstructor
+public class Role implements Serializable {
+
+	private static final long serialVersionUID = 8426189588434231816L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

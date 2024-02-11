@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS gestao.admin (
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
+    
     PRIMARY KEY (id)
 );
