@@ -33,4 +33,17 @@ public class AuthenticationController {
 		
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+	
+	@PostMapping(path = "authenticate", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ResponseDTO<String>> authenticate(@RequestBody AdminDTO adminDTO) throws Exception {
+		var result = adminService.autenticate(adminDTO);
+		
+		var response = new ResponseDTO<String>();
+		
+		response.setSuccess(true);
+		
+		response.setResponse(result);
+		
+		return new ResponseEntity<>(response, HttpStatus.OK);		
+	}
 }
