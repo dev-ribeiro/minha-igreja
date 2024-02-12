@@ -1,0 +1,2 @@
+ALTER TABLE gestao.congregation
+ADD COLUMN IF NOT EXISTS admin_id VARCHAR(255) NOT NULL;

@@ -37,35 +37,38 @@ public class SecurityConfiguration {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		
+
 		http.csrf(csrf -> csrf.disable()).headers(headers -> headers.frameOptions(options -> options.disable()))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.authorizeHttpRequests((authorize) -> authorize.anyRequest().permitAll())
-				.httpBasic(Customizer.withDefaults())
-				.oauth2ResourceServer(conf -> conf.jwt(Customizer.withDefaults()));
+				.authorizeHttpRequests(
+						(authorize) -> authorize
+							.requestMatchers("/api/auth/*").permitAll()
+							.anyRequest().authenticated()
+						)
+				.httpBasic(Customizer.withDefaults()).oauth2ResourceServer(conf -> conf.jwt(Customizer.withDefaults()));
 
 		return http.build();
 	}
 
 	@Bean
 	public JwtDecoder jwtDecoder() {
-		
+
 		return NimbusJwtDecoder.withPublicKey(this.PUBLIC_KEY).build();
 	}
 
 	@Bean
 	public JwtEncoder jwtEncoder() {
-		
+
 		JWK jwk = new RSAKey.Builder(this.PUBLIC_KEY).privateKey(this.PRIVATE_KEY).build();
-		
+
 		JWKSource<SecurityContext> jwks = new ImmutableJWKSet<SecurityContext>(new JWKSet(jwk));
-		
+
 		return new NimbusJwtEncoder(jwks);
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		
+
 		return new BCryptPasswordEncoder();
 	}
 }

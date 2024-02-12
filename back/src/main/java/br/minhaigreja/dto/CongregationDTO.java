@@ -21,7 +21,7 @@ public class CongregationDTO implements Serializable {
     
     public Congregation toEntity() {
         Congregation entity = new Congregation();
-        entity.setNome(nome);
+        entity.setName(nome);
         entity.setEndereco(endereco);
         entity.setContato(contato);
         return entity;

@@ -16,7 +16,7 @@ import br.minhaigreja.services.AdminService;
 
 @RestController
 @RequestMapping(path = "api/auth")
-public class AuthenticationController {
+public class AuthenticationRestController {
 
 	@Autowired
 	private AdminService adminService;
